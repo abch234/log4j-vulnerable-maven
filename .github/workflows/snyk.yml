@@ -44,6 +44,7 @@ jobs:
          pwd
          cp -v /home/runner/*/*/*/*.html /home/runner/work/*/*/downloads
 
+
       # save the HTML in the artifact
       - name: Use the Upload Artifact GitHub Action
         uses: actions/upload-artifact@v2
