@@ -44,7 +44,7 @@ public class GreetingController {
   @GetMapping("/test3/{name}")
   public String test3(@PathVariable String name) {
     // ruleid: jdbctemplate-sqli
-    jdbcTemplate.query("SELECT id, first_name, last_name FROM customers WHERE first_name = " + name);
+    jdbcTemplate.query("SELECT id, first_name, last_name FROM customers WHERE first_name = ?", new Object[]{name});
     return "ok";
   }
 
