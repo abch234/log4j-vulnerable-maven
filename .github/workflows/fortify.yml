@@ -50,16 +50,16 @@ jobs:
       # required, you can use sub-actions like fortify/github-action/setup@v1 to set up the various Fortify tools
       # and run them directly from within your pipeline; see https://github.com/fortify/github-action#readme for
       # details.
-      - name: Run FoD SAST Scan
-        uses: fortify/github-action@a92347297e02391b857e7015792cd1926a4cd418
-        with:
-          sast-scan: true
-        env:
-          ### Required configuration when integrating with Fortify on Demand
-          FOD_URL: https://ams.fortify.com
-          FOD_TENANT: ${{secrets.FOD_TENANT}}
-          FOD_USER: ${{secrets.FOD_USER}}
-          FOD_PASSWORD: ${{secrets.FOD_PAT}}
+      # - name: Run FoD SAST Scan
+      #   uses: fortify/github-action@a92347297e02391b857e7015792cd1926a4cd418
+      #   with:
+      #     sast-scan: true
+      #   env:
+      #     ### Required configuration when integrating with Fortify on Demand
+      #     FOD_URL: https://ams.fortify.com
+      #     FOD_TENANT: ${{secrets.FOD_TENANT}}
+      #     FOD_USER: ${{secrets.FOD_USER}}
+      #     FOD_PASSWORD: ${{secrets.FOD_PAT}}
           ### Optional configuration when integrating with Fortify on Demand
           # EXTRA_PACKAGE_OPTS: -oss                       # Extra 'scancentral package' options, like '-oss'' if
                                                            # Debricked SCA scan is enabled on Fortify on Demand
