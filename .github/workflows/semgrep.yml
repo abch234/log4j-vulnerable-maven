@@ -23,4 +23,6 @@ jobs:
       image: semgrep/semgrep
     steps:
     - uses: actions/checkout@v4
-    - run: semgrep ci --severity=ERROR --severity=WARNING --error
+    - run: semgrep ci 
+
+
