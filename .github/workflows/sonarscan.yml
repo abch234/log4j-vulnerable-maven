@@ -33,7 +33,8 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=abch234
-            -Dsonar.projectKey=abch234
+            -Dsonar.organization=sonarcloud
+            -Dsonar.projectKey=abhisonarcloud
+            -Dsonar.projectName=sonarcloud-demo
 
 
