@@ -34,6 +34,6 @@ jobs:
         with:
           args: >
             -Dsonar.organization=abch234
-            -Dsonar.projectKey=log4j-vulnerable-maven
+            -Dsonar.projectKey=abch234
 
 
