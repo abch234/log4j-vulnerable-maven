@@ -34,7 +34,7 @@ jobs:
         with:
           args: >
             -Dsonar.organization=sonarcloud
-            -Dsonar.projectKey=abhisonarcloud
+            -Dsonar.projectKey=abhisonarcloud_sonarcloud-demo
             -Dsonar.projectName=sonarcloud-demo
 
 
