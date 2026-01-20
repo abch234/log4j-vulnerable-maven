@@ -33,7 +33,7 @@ jobs:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
         with:
           args: >
-            -Dsonar.organization=Abhishek Jha
-            -Dsonar.projectKey=abch234
+            -Dsonar.organization=abch234
+            -Dsonar.projectKey=log4j-vulnerable-maven
 
 
