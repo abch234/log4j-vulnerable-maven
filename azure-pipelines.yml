@@ -1,22 +1,47 @@
-# Maven
-# Build your Java project and run tests with Apache Maven.
-# Add steps that analyze code, save build artifacts, deploy, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/languages/java
-
 trigger:
 - main
 
-pool:
-  vmImage: ubuntu-latest
+stages:
+- stage: BuildStage
+  displayName: "Build Stage"
 
-steps:
-- task: Maven@3
-  inputs:
-    mavenPomFile: 'pom.xml'
-    mavenOptions: '-Xmx3072m'
-    javaHomeOption: 'JDKVersion'
-    jdkVersionOption: '1.11'
-    jdkArchitectureOption: 'x64'
-    publishJUnitResults: true
-    testResultsFiles: '**/surefire-reports/TEST-*.xml'
-    goals: 'package'
+  jobs:
+  - job: InfoJob
+    displayName: "Build Info"
+    pool: server
+    steps:
+    - task: ManualValidation@0
+      timeoutInMinutes: 1
+      inputs:
+        instructions: "Simulated build stage completed."
+        onTimeout: "resume"
+
+- stage: ApprovalStage
+  displayName: "Approval Stage"
+  dependsOn: BuildStage
+
+  jobs:
+  - job: ManualApproval
+    displayName: "Manual Validation Job"
+    pool: server
+    steps:
+    - task: ManualValidation@0
+      timeoutInMinutes: 10
+      inputs:
+        instructions: "Please approve to proceed to deployment stage."
+        onTimeout: "resume"
+
+- stage: DeploymentStage
+  displayName: "Deployment Stage"
+  dependsOn: ApprovalStage
+
+  jobs:
+  - job: DeployInfo
+    displayName: "Deployment Info"
+    pool: server
+    steps:
+    - task: ManualValidation@0
+      timeoutInMinutes: 1
+      inputs:
+        instructions: "Deployment stage executed successfully"
+        onTimeout: "resume"
