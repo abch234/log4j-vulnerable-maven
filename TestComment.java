@@ -10,7 +10,8 @@ public class CookieController {
     @RequestMapping(value = "/cookie2", method = "GET")
     public void setSecureCookie(@RequestParam String value, HttpServletResponse response) {
         // ruleid:cookie-missing-samesite
-        response.setHeader("Set-Cookie", "key=value; HttpOnly;");
+// Added SameSite and Secure attributes to help prevent CSRF attacks
+response.setHeader("Set-Cookie", "key=value; HttpOnly; Secure; SameSite=Strict;");
     }
 
     @RequestMapping(value = "/cookie3", method = "GET")
