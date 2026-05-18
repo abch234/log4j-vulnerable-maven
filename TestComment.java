@@ -19,7 +19,14 @@ public class CookieController {
         cookie.setSecure(true);
         cookie.setHttpOnly(true);
         // ruleid:cookie-missing-samesite
-        response.addCookie(cookie);
+// Manually set the Set-Cookie header with SameSite, Secure, and HttpOnly attributes
+// since older Servlet APIs may not support cookie.setSameSite()
+response.setHeader("Set-Cookie", "cookie=" + value + "; Secure; HttpOnly; SameSite=Strict");
+// Optionally, if running on Servlet 6.0+ or compatible container, you can use:
+// cookie.setSecure(true);
+// cookie.setHttpOnly(true);
+// cookie.setSameSite("Strict");
+// response.addCookie(cookie);
     }
 
     @RequestMapping(value = "/cookie4", method = "GET")
